@@ -1,0 +1,22 @@
+-- FireSpawner.lua
+-- Place this script inside ServerScriptService, AFTER AFSSController.lua
+-- Edit the Position and Name below to match whichever zone you're testing
+-- for now just put it anywhere btw thanks for helping us
+
+task.wait(2)
+
+local firePart = Instance.new("Part")
+firePart.Name = "Classroom_Fire"          -- change per zone/trial
+firePart.Size = Vector3.new(4, 1, 4)
+firePart.Position = Vector3.new(20, 1, 20) -- change to the zone's coordinates
+firePart.Anchored = true
+firePart.CanCollide = false
+firePart.Color = Color3.fromRGB(237, 125, 49)
+firePart:SetAttribute("Intensity", 100)    -- starting fire intensity for this trial
+firePart.Parent = workspace
+
+if _G.RunAFSSTrial then
+	_G.RunAFSSTrial(firePart)
+else
+	warn("AFSS: controller not loaded yet - check script order in ServerScriptService")
+end
